@@ -1,0 +1,29 @@
+{
+  "name": "mq-producer",
+  "version": "1.0.0",
+  "description": "Producer and Consumer services for awsMQ",
+  "main": "serverjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cato-tv/mq-producer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cato-tv/mq-producer/issues"
+  },
+  "homepage": "https://github.com/cato-tv/mq-producer#readme",
+  "dependencies": {
+    "config": "^3.3.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "stompit": "^1.0.0",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
+  }
+}

@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: feed-service
+spec:
+  selector:
+    app: feed-service
+  ports:
+    - protocol: "TCP"
+      port: 4000
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feed-service
+spec:
+  selector:
+    matchLabels:
+      app: feed-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: feed-service
+    spec:
+      containers:
+        - name: feed-service
+          image: docker.io/catotv/feed-service:latest
+          ports:
+            - containerPort: 4000
+              protocol: "TCP"

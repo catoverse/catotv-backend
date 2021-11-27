@@ -1,0 +1,14 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es2016",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "inlineSourceMap": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", ".env"],
+  "exclude": ["node_modules"]
+}

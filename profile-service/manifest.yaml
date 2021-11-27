@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: profile-service
+spec:
+  selector:
+    app: profile-service
+  ports:
+    - protocol: "TCP"
+      port: 4000
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profile-service
+spec:
+  selector:
+    matchLabels:
+      app: profile-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: profile-service
+    spec:
+      containers:
+        - name: profile-service
+          image: docker.io/catotv/profile-service:latest
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: profile-service-mongo-uri
+                  key: profile_service
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: jwt_secret
+          ports:
+            - containerPort: 4000
+              protocol: "TCP"

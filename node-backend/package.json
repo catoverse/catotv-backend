@@ -1,0 +1,29 @@
+{
+  "name": "cato-backend",
+  "version": "1.0.0",
+  "description": "Backend for cato.tv",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Cato TV",
+  "dependencies": {
+    "apollo-server": "^2.16.1",
+    "apollo-server-express": "^2.16.1",
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "require-all": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.11.0",
+    "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.8",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mq-producer
+spec:
+  selector:
+    app: mq-producer
+  ports:
+    - protocol: "TCP"
+      port: 4000
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mq-producer
+spec:
+  selector:
+    matchLabels:
+      app: mq-producer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mq-producer
+    spec:
+      containers:
+        - name: mq-producer
+          image: docker.io/catotv/mq-producer:latest
+          ports:
+            - containerPort: 4000
+              protocol: "TCP"

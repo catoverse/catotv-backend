@@ -1,0 +1,5 @@
+stomp.py
+mysql-connector-python
+python-etcd
+flask
+python-dotenv

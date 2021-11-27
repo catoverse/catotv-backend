@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-backend
+spec:
+  selector:
+    app: node-backend
+  ports:
+    - protocol: "TCP"
+      port: 4000
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-backend
+spec:
+  selector:
+    matchLabels:
+      app: node-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node-backend
+    spec:
+      containers:
+        - name: node-backend
+          image: docker.io/catotv/node-backend:latest
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: node-backend-mongo-uri
+                  key: node_backend
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: jwt_secret
+            - name: SERVICE_ACCOUNT
+              valueFrom:
+                secretKeyRef:
+                  name: fb-service-acc
+                  key: fb_service_acc
+          ports:
+            - containerPort: 4000
+              protocol: "TCP"
